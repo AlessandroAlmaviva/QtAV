@@ -884,9 +884,10 @@ qint64 AVPlayer::displayPosition() const
 
 void AVPlayer::setPosition(qint64 position)
 {
-    // FIXME: strange things happen if seek out of eof
-    if (position > d->stop_position_norm)
-        return;
+
+    //ALE EDIT
+   // if (position > d->stop_position_norm)
+   //     return;
     if (!isPlaying())
         return;
     qint64 pos_pts = position;
@@ -1520,7 +1521,6 @@ void AVPlayer::timerEvent(QTimerEvent *te)
     if (te->timerId() == d->timer_id) {
         // killTimer() should be in the same thread as object. kill here?
         if (isPaused()) {
-            d->clock->pause(true);
             //return; //ensure positionChanged emitted for stepForward()
         }
         // active only when playing

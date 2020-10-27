@@ -55,6 +55,8 @@ public:
      * \return <=0 if not support
      */
     virtual qint64 size() const Q_DECL_OVERRIDE;
+    // ALE EDIT
+    virtual bool isVariableSize() const Q_DECL_OVERRIDE;
 Q_SIGNALS:
     void deviceChanged();
 protected:
@@ -148,6 +150,14 @@ qint64 QIODeviceIO::size() const
     if (!d.dev)
         return 0;
     return d.dev->size(); // sequential device returns bytesAvailable()
+}
+
+
+bool QIODeviceIO::isVariableSize() const {
+    DPTR_D(const QIODeviceIO);
+    if (!d.dev)
+        return false;
+    return true;
 }
 // qrc support
 static const char kQFileName[] = "QFile";
