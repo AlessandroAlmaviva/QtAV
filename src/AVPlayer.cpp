@@ -633,6 +633,10 @@ bool AVPlayer::isAutoLoad() const
     return d->auto_load;
 }
 
+QMutex* AVPlayer::getLock() {
+    return d->demuxer.getLock();
+}
+
 void AVPlayer::setAsyncLoad(bool value)
 {
     if (d->async_load == value)

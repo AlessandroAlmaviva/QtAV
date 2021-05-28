@@ -27,6 +27,7 @@
 #include <QtCore/QVariant>
 #include <QtCore/QObject>
 #include <QtCore/QScopedPointer>
+#include <QMutex>
 
 struct AVFormatContext;
 struct AVCodecContext;
@@ -102,6 +103,7 @@ public:
     void setSeekUnit(SeekUnit unit);
     SeekUnit seekUnit() const;
     void setSeekType(SeekType target);
+    QMutex* getLock();
     SeekType seekType() const;
     /*!
      * \brief seek

@@ -30,6 +30,7 @@
 #include <QtAV/Statistics.h>
 #include <QtAV/VideoDecoder.h>
 #include <QtAV/AVError.h>
+#include <QMutex>
 
 QT_BEGIN_NAMESPACE
 class QIODevice;
@@ -145,6 +146,8 @@ public:
      */
     void setAutoLoad(bool value = true); // NOT implemented
     bool isAutoLoad() const; // NOT implemented
+
+    QMutex* getLock();
 
     MediaStatus mediaStatus() const;
     // TODO: add hasAudio, hasVideo, isMusic(has pic)

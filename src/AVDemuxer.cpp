@@ -351,6 +351,10 @@ AVDemuxer::~AVDemuxer()
     unload();
 }
 
+QMutex* AVDemuxer::getLock() {
+    return &d->mutex;
+}
+
 static void getFFmpegInputFormats(QStringList* formats, QStringList* extensions)
 {
     static QStringList exts;
